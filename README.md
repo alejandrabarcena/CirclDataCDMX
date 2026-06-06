@@ -5,7 +5,7 @@
 
   ## Running the code
 
-  Run `npm i` to install the dependencies.
-  Run `npm run dev` to start the development server.
-  Run `pip install requirements.txt`to install all libraries used
-  Run `streamlit run cdmx_event_simulation.py`
+  * Run `npm i` to install the dependencies.
+  * Run `npm run dev` to start the development server.
+  * Run `pip install requirements.txt`to install all libraries used
+  * Run `streamlit run cdmx_event_simulation.py`
