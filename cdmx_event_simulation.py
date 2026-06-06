@@ -37,14 +37,28 @@ ESTADIO_AZTECA = {
     "name": "Estadio Azteca",
     "lat": 19.3029,
     "lon": -99.1506,
-    "capacity": 87000
+    "capacity": 83000,
+    "default_attendance": 83000,
+    "waste_profile": {
+        "event_day": 1.0,
+        "post_event_day1": 0.7,
+        "post_event_day3": 0.45,
+        "post_event_day7": 0.2,
+    }
 }
 
 AUTODROMO_HERMANOS_RODRIGUEZ = {
     "name": "Autódromo Hermanos Rodríguez",
     "lat": 19.4042,
     "lon": -99.0907,
-    "capacity": 135000
+    "capacity": 90000,
+    "default_attendance": 90000,
+    "waste_profile": {
+        "event_day": 1.8,
+        "post_event_day1": 0.9,
+        "post_event_day3": 0.5,
+        "post_event_day7": 0.25,
+    }
 }
 
 # Zonas específicas para Estadio Azteca (Enfoque Sur)
@@ -237,19 +251,20 @@ class EnvironmentalImpactCalculator:
         'walk': 0.0
     }
     
-    def __init__(self, attendees_df: pd.DataFrame):
+    def __init__(self, attendees_df: pd.DataFrame, waste_profile: Optional[Dict[str, float]] = None):
         self.attendees = attendees_df
+        self.waste_profile = waste_profile or self.WASTE_PER_PERSON_DAY
     
     def calculate_waste(self, day: int, active_attendees: int) -> Dict:
         """Calculate waste generation"""
         if day == 0:
-            waste_coefficient = self.WASTE_PER_PERSON_DAY['event_day']
+            waste_coefficient = self.waste_profile['event_day']
         elif day == 1:
-            waste_coefficient = self.WASTE_PER_PERSON_DAY['post_event_day1']
+            waste_coefficient = self.waste_profile['post_event_day1']
         elif day <= 3:
-            waste_coefficient = self.WASTE_PER_PERSON_DAY['post_event_day3']
+            waste_coefficient = self.waste_profile['post_event_day3']
         else:
-            waste_coefficient = self.WASTE_PER_PERSON_DAY['post_event_day7']
+            waste_coefficient = self.waste_profile['post_event_day7']
         
         total_waste = active_attendees * waste_coefficient
         
@@ -612,40 +627,25 @@ def inject_dashboard_styles() -> None:
         """
         <style>
             :root {
-                --bg: #f5fbf8;
-                --bg-soft: #edf7f2;
-                --panel: rgba(255, 255, 255, 0.94);
-                --panel-border: rgba(148, 163, 184, 0.16);
+                --bg: #f7faf9;
+                --bg-soft: #edf5f1;
+                --panel: rgba(255, 255, 255, 0.96);
+                --panel-border: rgba(148, 163, 184, 0.14);
                 --text: #243248;
                 --muted: #64748b;
-                --accent: #10a36d;
-                --accent-2: #3274ff;
-                --accent-3: #ff9f1a;
-                --danger: #ff6b6b;
-                --radius-xl: 30px;
-                --radius-lg: 24px;
-                --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.10);
+                --accent: #0ea36f;
+                --accent-2: #3b82f6;
+                --accent-3: #f59e0b;
+                --danger: #ef4444;
+                --radius-xl: 28px;
+                --radius-lg: 22px;
+                --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.08);
             }
 
             .stApp {
-                background:
-                    radial-gradient(circle at top left, rgba(16, 163, 109, 0.10), transparent 26%),
-                    radial-gradient(circle at right top, rgba(50, 116, 255, 0.09), transparent 24%),
-                    linear-gradient(180deg, #f8fcfa 0%, #eef7f2 100%);
+                background: linear-gradient(180deg, #f9fcfa 0%, #eef6f1 100%);
                 color: var(--text);
                 font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            }
-
-            .stApp::before {
-                content: '';
-                position: fixed;
-                inset: 0;
-                pointer-events: none;
-                background-image:
-                    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
-                background-size: 88px 88px;
-                mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.10));
             }
 
             [data-testid="stHeader"], [data-testid="stToolbar"], #MainMenu, footer {
@@ -664,9 +664,9 @@ def inject_dashboard_styles() -> None:
             }
 
             [data-testid="stSidebar"] {
-                background: rgba(255, 255, 255, 0.96);
-                border-right: 1px solid rgba(148, 163, 184, 0.16);
-                box-shadow: 12px 0 30px rgba(15, 23, 42, 0.06);
+                background: rgba(255, 255, 255, 0.98);
+                border-right: 1px solid rgba(148, 163, 184, 0.12);
+                box-shadow: 10px 0 24px rgba(15, 23, 42, 0.05);
             }
 
             [data-testid="stSidebar"] > div {
@@ -726,13 +726,13 @@ def inject_dashboard_styles() -> None:
                 align-items: center;
                 justify-content: space-between;
                 gap: 1rem;
-                padding: 0.9rem 1.1rem;
-                margin-bottom: 1.2rem;
-                border-radius: 26px;
-                background: rgba(255, 255, 255, 0.86);
-                border: 1px solid rgba(226, 232, 240, 0.92);
+                padding: 0.8rem 1rem;
+                margin-bottom: 1rem;
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.92);
+                border: 1px solid rgba(226, 232, 240, 0.88);
                 box-shadow: var(--shadow-lg);
-                backdrop-filter: blur(18px);
+                backdrop-filter: blur(14px);
             }
 
             .top-brand {
@@ -742,7 +742,7 @@ def inject_dashboard_styles() -> None:
             }
 
             .top-brand img {
-                height: 2.9rem;
+                height: 2.5rem;
                 width: auto;
             }
 
@@ -753,36 +753,22 @@ def inject_dashboard_styles() -> None:
             }
 
             .top-copy strong {
-                font-size: 0.98rem;
+                font-size: 0.95rem;
                 color: var(--text);
             }
 
             .top-copy span {
-                font-size: 0.75rem;
+                font-size: 0.74rem;
                 color: var(--muted);
             }
 
-            .top-menu {
-                width: 44px;
-                height: 44px;
-                border-radius: 14px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                color: #334155;
-                background: rgba(15, 23, 42, 0.02);
-                box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.10);
-                font-size: 1.5rem;
-                font-weight: 700;
-            }
-
             .hero-card {
-                border: 1px solid rgba(226, 232, 240, 0.98);
+                border: 1px solid rgba(226, 232, 240, 0.96);
                 border-radius: var(--radius-xl);
-                background: linear-gradient(180deg, rgba(244, 252, 248, 0.96), rgba(240, 248, 244, 0.96));
+                background: linear-gradient(180deg, rgba(247, 252, 249, 0.98), rgba(241, 248, 244, 0.98));
                 box-shadow: var(--shadow-lg);
-                padding: 2rem 1.5rem 1.8rem;
-                margin-bottom: 1.2rem;
+                padding: 1.7rem 1.4rem 1.5rem;
+                margin-bottom: 1rem;
                 position: relative;
                 overflow: hidden;
                 text-align: center;
@@ -791,38 +777,38 @@ def inject_dashboard_styles() -> None:
             .hero-card::after {
                 content: '';
                 position: absolute;
-                inset: -2.5rem auto auto 50%;
+                inset: -2rem auto auto 50%;
                 transform: translateX(-50%);
-                width: 18rem;
-                height: 18rem;
+                width: 14rem;
+                height: 14rem;
                 border-radius: 50%;
-                background: radial-gradient(circle, rgba(16, 163, 109, 0.14), transparent 62%);
-                filter: blur(6px);
+                background: radial-gradient(circle, rgba(16, 163, 109, 0.12), transparent 64%);
+                filter: blur(5px);
                 pointer-events: none;
             }
 
             .hero-kicker {
-                letter-spacing: 0.18em;
+                letter-spacing: 0.14em;
                 text-transform: uppercase;
                 color: var(--accent);
-                font-size: 0.72rem;
+                font-size: 0.69rem;
                 font-weight: 700;
                 margin-bottom: 0.8rem;
             }
 
             .hero-title {
-                font-size: clamp(1.8rem, 3.6vw, 3rem);
+                font-size: clamp(1.6rem, 3vw, 2.5rem);
                 line-height: 1.06;
                 font-weight: 700;
-                color: #3b4e6b;
+                color: #30455f;
                 margin: 0;
             }
 
             .hero-subtitle {
                 margin-top: 0.75rem;
                 color: var(--muted);
-                font-size: 1rem;
-                max-width: 72ch;
+                font-size: 0.96rem;
+                max-width: 66ch;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -839,13 +825,13 @@ def inject_dashboard_styles() -> None:
                 display: inline-flex;
                 align-items: center;
                 gap: 0.4rem;
-                border: 1px solid rgba(148, 163, 184, 0.16);
+                border: 1px solid rgba(148, 163, 184, 0.14);
                 background: rgba(255, 255, 255, 0.96);
                 color: #475569;
                 border-radius: 999px;
                 padding: 0.45rem 0.8rem;
                 font-size: 0.82rem;
-                box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+                box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
             }
 
             .section-label {
@@ -853,38 +839,38 @@ def inject_dashboard_styles() -> None:
                 align-items: center;
                 gap: 0.5rem;
                 color: #25344c;
-                font-size: 1.55rem;
-                font-weight: 600;
+                font-size: 1.18rem;
+                font-weight: 700;
                 margin: 0 0 0.35rem 0;
             }
 
             .section-label::before {
                 content: '';
-                width: 14px;
-                height: 14px;
-                border-radius: 6px;
+                width: 10px;
+                height: 10px;
+                border-radius: 999px;
                 display: inline-block;
                 background: linear-gradient(135deg, rgba(16, 163, 109, 0.96), rgba(50, 116, 255, 0.9));
-                box-shadow: 0 0 0 6px rgba(16, 163, 109, 0.10);
+                box-shadow: 0 0 0 5px rgba(16, 163, 109, 0.08);
             }
 
             .section-panel {
-                margin-bottom: 1rem;
+                margin-bottom: 0.85rem;
             }
 
             .section-subtitle {
                 color: var(--muted);
-                font-size: 0.96rem;
-                line-height: 1.6;
-                margin-bottom: 0.7rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 0.55rem;
             }
 
             div[data-testid="metric-container"] {
-                border: 1px solid rgba(226, 232, 240, 0.98);
-                border-radius: 22px;
-                background: rgba(255, 255, 255, 0.96);
-                padding: 1rem 1rem 0.8rem;
-                box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+                border: 1px solid rgba(226, 232, 240, 0.92);
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.97);
+                padding: 0.95rem 0.95rem 0.75rem;
+                box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
             }
 
             div[data-testid="metric-container"] label {
@@ -900,12 +886,12 @@ def inject_dashboard_styles() -> None:
 
             .stButton > button,
             .stDownloadButton > button {
-                border-radius: 18px !important;
+                border-radius: 16px !important;
                 border: 1px solid rgba(16, 163, 109, 0.22) !important;
                 background: linear-gradient(135deg, #17c58c, #0fa56f) !important;
                 color: white !important;
                 font-weight: 700 !important;
-                box-shadow: 0 18px 36px rgba(16, 163, 109, 0.18);
+                box-shadow: 0 14px 28px rgba(16, 163, 109, 0.16);
             }
 
             .stButton > button:hover,
@@ -934,7 +920,7 @@ def inject_dashboard_styles() -> None:
                 background: rgba(255, 255, 255, 0.92);
                 border: 1px solid rgba(226, 232, 240, 1);
                 border-radius: 999px;
-                padding: 0.7rem 1rem;
+                padding: 0.65rem 0.95rem;
                 box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
             }
 
@@ -954,10 +940,10 @@ def inject_dashboard_styles() -> None:
 
             [data-testid="stAlert"] {
                 border: 1px solid rgba(191, 219, 254, 0.85) !important;
-                background: linear-gradient(180deg, rgba(239, 246, 255, 0.95), rgba(224, 242, 254, 0.95)) !important;
+                background: linear-gradient(180deg, rgba(239, 246, 255, 0.94), rgba(224, 242, 254, 0.94)) !important;
                 color: #1e3a5f !important;
                 border-radius: 22px !important;
-                box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08) !important;
+                box-shadow: 0 10px 22px rgba(37, 99, 235, 0.07) !important;
             }
         </style>
         """,
@@ -984,20 +970,17 @@ def render_hero_section(selected_venue: Dict, n_attendees: int) -> None:
                     <span>Inteligencia para la Economía Circular</span>
                 </div>
             </div>
-            <div class="top-menu">☰</div>
         </div>
         <div class="hero-card">
             <div class="hero-kicker">Sistema Inteligente de Gestión de Residuos - Mundial 2026</div>
-            <h1 class="hero-title">Diseño ejecutivo para el monitoreo de impacto urbano</h1>
+            <h1 class="hero-title">Monitoreo claro del impacto urbano</h1>
             <div class="hero-subtitle">
-                Visualización en Streamlit para simular aforo, residuos, emisiones y puntos críticos en Ciudad de México,
-                conservando las gráficas analíticas existentes.
+                Vista operativa para estimar aforo, residuos, emisiones y puntos críticos en la Ciudad de México.
             </div>
             <div class="hero-meta">
                 <span class="hero-chip">🏟️ {selected_venue['name']}</span>
                 <span class="hero-chip">👥 {n_attendees:,} asistentes</span>
                 <span class="hero-chip">📍 {venue_type}</span>
-                <span class="hero-chip">🛰️ CDMX / movilidad / ambiente</span>
             </div>
         </div>
         """,
@@ -1031,20 +1014,34 @@ def main():
     # Event venue selection
     venue_option = st.sidebar.selectbox(
         "Seleccionar Venue",
-        ["Estadio Azteca (5000 personas)", "Autódromo Hermanos Rodríguez (7500 personas)"]
+        [
+            "Estadio Azteca | Escenario Mundial FIFA 2026 (83,000)",
+            "Autódromo H. Rodríguez | Escenario festival masivo histórico (90,000)"
+        ]
     )
     
     # Set attendees and venue based on selection
     if "Autódromo" in venue_option:
-        n_attendees = 7500
         selected_venue = AUTODROMO_HERMANOS_RODRIGUEZ
         selected_zones = ZONAS_AUTODROMO
     else:
-        n_attendees = 5000
         selected_venue = ESTADIO_AZTECA
         selected_zones = ZONAS_AZTECA
+
+    n_attendees = st.sidebar.number_input(
+        "Asistencia proyectada",
+        min_value=1000,
+        max_value=int(selected_venue['capacity']),
+        value=int(selected_venue['default_attendance']),
+        step=1000,
+        help="Calibrado con los escenarios documentados en REPORT.md para eventos masivos en CDMX."
+    )
     
     st.sidebar.info(f"📍 Venue: {selected_venue['name']}\n👥 Asistentes: {n_attendees:,}")
+    st.sidebar.caption(
+        "Supuestos base: CDMX genera 12,816 t/día; el escenario FIFA en Azteca usa "
+        "1.0 kg/persona (rango reportado 0.8-1.2)."
+    )
     
     seed = st.sidebar.number_input(
         "Semilla Aleatoria",
@@ -1061,7 +1058,7 @@ def main():
             
             # Initialize simulator with selected venue
             simulator = EventSimulator(attendees, target_zones=selected_zones, event_location=selected_venue)
-            impact_calc = EnvironmentalImpactCalculator(attendees)
+            impact_calc = EnvironmentalImpactCalculator(attendees, waste_profile=selected_venue['waste_profile'])
             
             # Run simulation for all days
             simulation_results = {}
@@ -1267,22 +1264,12 @@ def main():
         )
         
         st.markdown("""
-        Esta aplicación simula eventos masivos en la Ciudad de México y analiza:
-        
-        - 🏠 **Población Sintética**: Genera asistentes con ubicaciones realistas en CDMX
-        - 🏟️ **Eventos Masivos**: Simula concentraciones en diferentes venues
-          - **Estadio Azteca**: 5,000 personas
-          - **Autódromo Hermanos Rodríguez**: 7,500 personas
-        - 🚶 **Desplazamiento Post-Evento**: Modela el movimiento hacia zonas estratégicas dinámicas
-        - ♻️ **Residuos**: Estima la generación de residuos por tipo
-        - 🌍 **Emisiones**: Calcula emisiones de CO2 por modo de transporte
-        - ⚠️ **Puntos Críticos**: Identifica zonas de alto impacto ambiental
-        
-        ### Períodos de Análisis:
-        - **Día 0**: Día del evento
-        - **Día +1**: Un día después
-        - **Día +3**: Tres días después
-        - **Día +7**: Una semana después
+        Esta aplicación simula eventos masivos en la Ciudad de México y entrega cuatro salidas claras:
+
+        - Población sintética con distribución espacial por zonas.
+        - Residuos, emisiones y puntos críticos por día.
+        - Comparación temporal en Día 0, Día +1, Día +3 y Día +7.
+        - Descarga de datos en CSV y JSON para análisis posterior.
         """)
 
 if __name__ == "__main__":
