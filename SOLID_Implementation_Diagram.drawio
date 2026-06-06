@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-06-06T17:13:00.000Z" agent="5.0" version="21.0.0" etag="solid-attendance-tracking" type="device">
+  <diagram name="SOLID Implementation for Event Attendance" id="solid-attendance-diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Title -->
+        <mxCell id="title" value="SOLID Protocol - Sistema de Medición Precisa de Asistencia a Eventos" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- User Layer -->
+        <mxCell id="user-layer-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1080" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="user-layer-title" value="👥 CAPA DE USUARIOS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Attendees -->
+        <mxCell id="attendee1" value="Asistente 1&#xa;Pod Personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="attendee2" value="Asistente 2&#xa;Pod Personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="130" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="attendee3" value="Asistente N&#xa;Pod Personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="380" y="130" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Organizer -->
+        <mxCell id="organizer" value="Organizador&#xa;Pod Empresarial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="130" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Government -->
+        <mxCell id="government" value="Gobierno CDMX&#xa;Pod Institucional" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;strokeColor=#0D47A1;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="830" y="130" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Analytics -->
+        <mxCell id="analytics" value="EcoEvent.AI&#xa;Pod Analítico" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#4A148C;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1010" y="130" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- SOLID Layer -->
+        <mxCell id="solid-layer-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="230" width="1080" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="solid-layer-title" value="🔐 CAPA SOLID - DATOS DESCENTRALIZADOS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="350" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Solid Pods -->
+        <mxCell id="pod1" value="Pod 1&#xa;&#xa;✓ Perfil usuario&#xa;✓ Historial eventos&#xa;✓ Preferencias&#xa;✓ Check-ins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6F00;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="140" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pod2" value="Pod 2&#xa;&#xa;✓ Perfil usuario&#xa;✓ Historial eventos&#xa;✓ Preferencias&#xa;✓ Check-ins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6F00;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="280" width="140" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pod-organizer" value="Pod Organizador&#xa;&#xa;✓ Datos evento&#xa;✓ Permisos lectura&#xa;✓ Estadísticas&#xa;✓ Confirmaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6F00;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="420" y="280" width="160" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pod-gov" value="Pod Gobierno&#xa;&#xa;✓ Datos agregados&#xa;✓ Métricas públicas&#xa;✓ Cumplimiento&#xa;✓ Auditoría" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6F00;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="610" y="280" width="160" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pod-analytics" value="Pod EcoEvent.AI&#xa;&#xa;✓ Predicciones&#xa;✓ Análisis ML&#xa;✓ Recomendaciones&#xa;✓ Datos anónimos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6F00;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="280" width="160" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Solid Server -->
+        <mxCell id="solid-server" value="SOLID SERVER&#xa;(Descentralizado)&#xa;&#xa;Autenticación WebID&#xa;Control de Acceso (ACL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6F00;strokeColor=#E65100;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="990" y="280" width="150" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Check-in System -->
+        <mxCell id="checkin-layer-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#4A148C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="1080" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="checkin-layer-title" value="📱 SISTEMA DE CHECK-IN Y MEDICIÓN" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="450" width="350" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Check-in Methods -->
+        <mxCell id="qr-checkin" value="QR Code&#xa;Check-in&#xa;&#xa;Escaneo rápido&#xa;Timestamp preciso&#xa;Geolocalización" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#4A148C;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="140" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="nfc-checkin" value="NFC/RFID&#xa;Check-in&#xa;&#xa;Pulseras/Tarjetas&#xa;Sin contacto&#xa;Alta velocidad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#4A148C;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="490" width="140" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="app-checkin" value="App Móvil&#xa;Check-in&#xa;&#xa;Bluetooth beacon&#xa;Auto check-in&#xa;Notificaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#4A148C;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="420" y="490" width="140" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="facial-checkin" value="Reconocimiento&#xa;Facial (Opt-in)&#xa;&#xa;Entrada rápida&#xa;Sin contacto&#xa;Privacidad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#4A148C;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="590" y="490" width="140" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Real-time Dashboard -->
+        <mxCell id="dashboard" value="Dashboard Tiempo Real&#xa;&#xa;📊 Asistencia actual&#xa;📈 Predicción vs Real&#xa;🎯 Ocupación por zona&#xa;⚠️ Alertas capacidad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9C27B0;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="760" y="490" width="180" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- ML Integration -->
+        <mxCell id="ml-integration" value="Integración ML&#xa;&#xa;🤖 Ajuste predicciones&#xa;📉 Análisis desviación&#xa;🔄 Feedback loop&#xa;✨ Mejora continua" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9C27B0;strokeWidth=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="970" y="490" width="170" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Data Flow Layer -->
+        <mxCell id="dataflow-layer-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#1B5E20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="630" width="1080" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="dataflow-layer-title" value="🔄 FLUJO DE DATOS Y PERMISOS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="640" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Data Flow Steps -->
+        <mxCell id="step1" value="1. REGISTRO&#xa;&#xa;Usuario crea Pod&#xa;Define permisos&#xa;Acepta términos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2" value="2. CHECK-IN&#xa;&#xa;Escaneo/NFC/App&#xa;Escribe en Pod&#xa;Timestamp + GPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="260" y="680" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3" value="3. AGREGACIÓN&#xa;&#xa;Contador anónimo&#xa;Sin datos personales&#xa;Solo estadísticas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="440" y="680" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4" value="4. ANÁLISIS&#xa;&#xa;ML procesa datos&#xa;Compara predicción&#xa;Genera insights" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="620" y="680" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="step5" value="5. FEEDBACK&#xa;&#xa;Actualiza modelo&#xa;Mejora precisión&#xa;Reportes finales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontColor=#FFFFFF;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="680" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Privacy Box -->
+        <mxCell id="privacy-box" value="🔒 PRIVACIDAD&#xa;&#xa;✓ Usuario controla datos&#xa;✓ Permisos granulares&#xa;✓ Revocables&#xa;✓ Transparencia total&#xa;✓ GDPR compliant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEB3B;strokeColor=#F57F17;strokeWidth=2;align=center;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="980" y="680" width="160" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from Users to Pods -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4CAF50;" edge="1" parent="1" source="attendee1" target="pod1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4CAF50;" edge="1" parent="1" source="attendee2" target="pod2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#FF9800;" edge="1" parent="1" source="organizer" target="pod-organizer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2196F3;" edge="1" parent="1" source="government" target="pod-gov">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9C27B0;" edge="1" parent="1" source="analytics" target="pod-analytics">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from Pods to Check-in -->
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9C27B0;dashed=1;" edge="1" parent="1" source="pod1" target="qr-checkin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9C27B0;dashed=1;" edge="1" parent="1" source="pod-organizer" target="dashboard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9C27B0;dashed=1;" edge="1" parent="1" source="pod-analytics" target="ml-integration">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from Check-in to Data Flow -->
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4CAF50;" edge="1" parent="1" source="qr-checkin" target="step2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4CAF50;" edge="1" parent="1" source="dashboard" target="step3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4CAF50;" edge="1" parent="1" source="ml-integration" target="step4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Flow arrows between steps -->
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1B5E20;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1B5E20;" edge="1" parent="1" source="step2" target="step3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1B5E20;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1B5E20;" edge="1" parent="1" source="step4" target="step5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
