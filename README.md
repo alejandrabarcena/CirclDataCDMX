@@ -211,7 +211,7 @@ Proyecto desarrollado para Hackathon Conciencia IA.
 
 * Alejandra Bárcena — Frontend, UX/UI y documentación.
 * Kevin Pavón — Desarrollo.
-* Integrantes adicionales por definir.
+* Omar Bolaños— Desarrollo.
 
 ---
 
